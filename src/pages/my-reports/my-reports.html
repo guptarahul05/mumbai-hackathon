@@ -1,0 +1,59 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>My Reports</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="downloadFile()" (press)="toastFunc('Click To Download Reports')">
+        <ion-icon name="download"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<style>
+  .listClass{
+    background: url('assets/imgs/bg.jpg') no-repeat center center fixed;
+    background-size: cover;
+    overflow: hidden;
+    height: 100%;
+    opacity: 0.85 ;
+   }
+</style>
+
+<ion-content padding class="listClass">
+  <ion-list>
+      <ion-item class="itemClass">
+          <ion-label stacked>Filter</ion-label>
+          <ion-select #f (ionChange)="selectFunction(f.value)"  interface="popover">
+            <ion-option value="nessus" selected>NESSUS</ion-option>
+            <ion-option value="xss">XSS</ion-option>
+            <ion-option value="ssl">SSL</ion-option>
+            <ion-option value="payload">PAYLOAD</ion-option>
+          </ion-select>
+      </ion-item>
+  </ion-list>
+  <ion-card *ngIf="noReportCheck" style="height:10%">
+    <ion-card-content>
+        <h3>
+            No Reports Found!!!
+          </h3>
+    </ion-card-content>
+    
+  </ion-card>
+
+  <ion-card no-padding *ngFor="let file of filesList;let i = index " style="height:10%">
+    <!-- <ng-container *ngFor="let file of filesList;let i = index "  > -->
+      <!-- <ion-item *ngIf="file.isFile"> -->
+        <ion-grid>
+        <ion-row>
+          <ion-col col-9>{{file.name}}</ion-col><ion-col col-1><ion-icon item-end name="open" (click)="openFile(file.name)"></ion-icon></ion-col ><ion-col col-1><ion-icon item-end name="share" (click)="shareFile(file.name)"></ion-icon></ion-col><ion-col col-1><ion-icon item-end name="trash" (click)="deleteFile(file.name,i)"></ion-icon></ion-col>
+        </ion-row>
+      </ion-grid>
+        <!-- <ion-label>{{file.name}}</ion-label>
+        <ion-icon item-end name="open" (click)="openFile(file.name)"></ion-icon>&nbsp;
+        <ion-icon item-end name="share" (click)="shareFile(file.name)"></ion-icon>&nbsp;
+        <ion-icon item-end name="trash" (click)="deleteFile(file.name,i)"></ion-icon> -->
+       
+    <!-- </ng-container> -->
+  </ion-card>
+  
+</ion-content>

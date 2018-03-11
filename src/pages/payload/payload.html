@@ -1,0 +1,64 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Payload Generation</ion-title>
+  </ion-navbar>
+
+</ion-header>
+<style>
+.listClass{
+  background: url('assets/imgs/bg.jpg') no-repeat center center fixed;
+  background-size: cover;
+  overflow: hidden;
+  height: 100%;
+  opacity: 0.85 ;
+ }
+</style>
+
+<ion-content padding class="listClass">
+    <form [formGroup]="payloadRequest" (ngSubmit)="downloadPayload()" >
+        <ion-list no-lines >
+          <ion-item class="itemClass">
+            <ion-label stacked>Enter Filename</ion-label>
+            <ion-input type="text" formControlName="payloadFilename"placeholder="test"></ion-input>
+          </ion-item>
+          <ion-item class="itemClass">
+              <ion-label stacked>Host IP</ion-label>
+              <ion-input type="text" formControlName="hostIP" placeholder="10.10.10.10"></ion-input>
+          </ion-item>
+          <ion-item class="itemClass">
+                <ion-label stacked>Host Port</ion-label>
+                <ion-input type="number" formControlName="hostPort" placeholder="4444"></ion-input>
+          </ion-item>
+          <ion-item class="itemClass">
+            <ion-label stacked >Platform</ion-label>
+            <ion-select formControlName="payloadPlatform" interface="popover" >
+              <ion-option value="android">Android</ion-option>
+              <ion-option value="windows">Windows</ion-option>
+              <ion-option value="php">PHP</ion-option>
+            </ion-select>
+          </ion-item>
+          <hr class="classHr1">
+          <ion-item class="itemClass">
+            <ion-label stacked>Payload Type</ion-label>
+            <ion-select formControlName="payloadType"  interface="popover">
+              <ion-option value="meterpreter">Meterpreter</ion-option>
+              <ion-option value="cmd">Command Based</ion-option>
+            </ion-select>
+            </ion-item>
+          <hr class="classHr1">
+            <ion-item class="itemClass">
+              <ion-label stacked>Call Type</ion-label>
+              <ion-select formControlName="callType" interface="popover" >
+                <ion-option value="reverse_tcp">Reverse Tcp</ion-option>
+                <ion-option value="bind_tcp">Bind Tcp</ion-option>
+              </ion-select>
+            </ion-item>
+        </ion-list>
+        <div class="buttonClass">
+          <button [disabled]="!payloadRequest.valid" ion-button round color="danger" outline type="submit" style="color:red;">Download Payload</button>
+        </div>
+        
+      </form>
+
+</ion-content>

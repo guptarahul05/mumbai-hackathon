@@ -1,0 +1,46 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Download Report</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="close()">Close</button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+<style>
+    .listClass{
+      background: url('assets/imgs/bg.jpg') no-repeat center center fixed;
+      background-size: cover;
+      overflow: hidden;
+      height: 100%;
+      
+     }
+  </style>
+
+<ion-content padding class="listClass">
+    <ion-card class="cardClass">
+      <ion-card-content>
+          <form [formGroup]="downloadForm" (ngSubmit)="submitRequest()" >
+              <ion-list no-lines>
+                <ion-item class="itemClass">
+                  <ion-label stacked>Enter File Name</ion-label>
+                  <ion-input type="text" formControlName="fileName"></ion-input>
+                </ion-item>
+                <ion-item class="itemClass">
+                  <ion-label stacked>Report Type</ion-label>
+                  <ion-select formControlName="reportType" interface=popover required>
+                    <ion-option value="nessus">Nessus</ion-option>
+                    <ion-option value="xss">XSS</ion-option>
+                    <ion-option value="ssl">SSL</ion-option>
+                  </ion-select>
+                </ion-item>
+              </ion-list>
+              <div style="text-align:right;margin-right:2%;margin-bottom:1%">
+                <button [disabled]="!downloadForm.valid" class="buttonClass" color="danger" outline ion-button type="submit" round small>Download</button> 
+              </div>
+            </form>
+      </ion-card-content>
+      </ion-card> 
+  </ion-content>

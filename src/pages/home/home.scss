@@ -1,0 +1,20 @@
+page-home {
+    
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+        width: 100%;
+        border: 1px solid #ddd;
+    }
+    
+    th, td {
+        text-align: left;
+        padding: 8px;
+    }
+    ion-col{
+        border: 1px solid  rgb(66, 66, 66);
+    }
+   ion-col .ion-class-center{
+        border-right:none;
+    }
+}

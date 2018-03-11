@@ -1,0 +1,111 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Information Gathering</ion-title>
+  </ion-navbar>
+</ion-header>
+<style>
+  .listClass{
+    background: url('assets/imgs/bg.jpg') no-repeat center center fixed;
+    background-size: cover;
+    overflow: hidden;
+    height: 100%;
+    opacity: 0.85 ;
+   }
+</style>
+<ion-content padding class="listClass">
+  <ion-card class="cardClass" >
+    <ion-card-content>
+        <form [formGroup]="requestForm" (ngSubmit)="submitRequest()" >
+            <ion-list no-lines>
+              <ion-item class="itemClass">
+                <ion-label stacked>Enter Url</ion-label>
+                <ion-input type="text" formControlName="url"></ion-input>
+              </ion-item>
+              <ion-item class="itemClass">
+                <ion-label stacked>Function Type</ion-label>
+                <ion-select formControlName="testType" interface=popover required>
+                  <ion-option value="whoiss">WHOIS</ion-option>
+                  <ion-option value="nmap_scan">NMAP</ion-option>
+                  <ion-option value="check_smtp">SMTP Open Relay</ion-option>
+                </ion-select>
+              </ion-item>
+            </ion-list>
+            <div style="text-align:right;margin-right:2%;margin-bottom:1%">
+              <button [disabled]="!requestForm.valid" class="buttonClass" color="danger" outline ion-button type="submit" round small>Send</button> 
+            </div>
+          </form>
+    </ion-card-content>
+    </ion-card> 
+    <ion-card *ngIf="whoisData" class="cardClass">
+      <ion-card-header style="color:red">
+        WHOIS Information
+      </ion-card-header>
+      <hr class="hrHeader">
+      <ion-card-content>
+          <ion-list>
+              <ion-item class="itemClass">
+                  Creation Date:<p>{{result.creation_date}}</p>
+              </ion-item>
+              <hr class="classHr">
+              <ion-item class="itemClass">
+                  Expiration Date:<p>{{result.expiration_date}}</p>
+              </ion-item>
+              <hr class="classHr">
+              <ion-item class="itemClass">
+                  Name Servers:<p>{{result.nameservers}}</p>
+              </ion-item>
+              <hr class="classHr">
+              <ion-item class="itemClass">
+                  Registrar:<p>{{result.registrar}}</p>
+              </ion-item>
+              <hr class="classHr">
+              <ion-item class="itemClass">
+                  Updated Date:<p>{{result.updated_date}}</p>
+              </ion-item>
+            </ion-list>
+      </ion-card-content>
+    </ion-card>
+    <ion-card class="cardClass" *ngIf="nmapData" >
+      <ion-card-header style="color:red">
+          NMAP Information
+      </ion-card-header>
+      <hr class="hrHeader">
+      <ion-card-content>
+        
+          <ion-list>
+              <ion-item>
+                  Ip:<p>{{result.addresses.ipv4}}</p>
+              </ion-item>
+              <ion-item>
+                  Host State:<p>{{result.status.state}}</p>
+              </ion-item>
+              <ion-item class="itemClass">
+                  <!-- <ion-grid>
+                      <ion-row><ion-col>Ports</ion-col><ion-col>Name</ion-col><ion-col>State</ion-col></ion-row>
+                      <ion-row  *ngFor="let tdata of tableData">
+                        <ion-col>{{tdata.Ports}}</ion-col><ion-col>{{tdata.Name}}</ion-col><ion-col>{{tdata.State}}</ion-col>
+                      </ion-row>
+                    </ion-grid> -->
+                <!-- <table>
+                  <tr>
+                    <th>Ports</th><th>Name</th><th>State</th>
+                  </tr>
+                  <tr *ngFor="let tdata of tableData">
+                    <td>{{tdata.Ports}}</td><td>{{tdata.Name}}</td><td>{{tdata.State}}</td>
+                  </tr>
+                </table>     -->
+                <ion-grid >
+                  <ion-row  >
+                    <ion-col col-3 class="ion-class-center" > PORT </ion-col><ion-col col-3 class="ion-class-center"> STATE </ion-col><ion-col col-6 > SERVICE </ion-col>
+                  </ion-row>
+                  <ion-row *ngFor="let tdata of tableData">
+                      <ion-col col-3> {{tdata.Ports}} </ion-col><ion-col col-3> {{tdata.State}} </ion-col><ion-col col-6> {{tdata.Name}} </ion-col>
+                  </ion-row>
+                </ion-grid>
+              </ion-item>
+              
+              </ion-list>
+       
+      </ion-card-content>
+    </ion-card>
+</ion-content>

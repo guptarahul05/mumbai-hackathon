@@ -1,0 +1,63 @@
+// http://ionicframework.com/docs/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+ion-header{
+    .toolbar-background{
+        background: linear-gradient(135deg,$header-first-color 0%,$header-last-color 100%);
+    }
+    .toolbar-title{
+     color : white;
+    } 
+    
+}
+ion-input{
+    border-bottom: 1.5px solid rgb(66, 66, 66) ;
+}
+ion-input.ng-invalid.ng-touched{
+    border-bottom: 1.5px solid red ;
+
+}
+ion-input.ng-valid{
+    border-bottom: 1.5px solid rgb(66, 66, 66) ; 
+}
+.cardClass{
+    background-color: rgba(255, 255, 255, 0.85);
+}
+.itemClass{
+   background-color: transparent;
+}
+.listClass{
+    background-color: rgba(255, 255, 255, 0.85);
+}
+.classHr{
+    background-color: red !important;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.classHr1{
+    background-color: rgb(66, 66, 66) !important;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 5%;
+    margin-right: 1.1%;
+    height: 1.5px;
+}
+.hrHeader{
+    background-color: red !important;
+    margin-top: 0;
+    margin-bottom: 0;
+    height: 1.5px;
+}
