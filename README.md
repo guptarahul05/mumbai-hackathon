@@ -44,7 +44,7 @@ Usage:
     1.Download the server side files.
     2.Run the flask application.
     3.Download Apk/Ipa.
-    4.Perform various test using mobile application. 
+    4.Perform various test using mobile application
 
 
 Note: Both flask application and mobile app should be run on the same network   
